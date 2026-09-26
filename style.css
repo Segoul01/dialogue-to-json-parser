@@ -1,0 +1,30 @@
+body {
+    background-color: rgb(23, 0, 26);
+    color: white;
+}
+
+.main-wrapper {
+    display: flex;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+button {
+    height: 3rem;
+    text-decoration: none;
+    border-radius: .5rem;
+    background-color: rgb(221, 203, 255);
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.output-wrapper {
+    display: flex;
+    flex-direction: column;
+    white-space: pre-wrap;
+}
