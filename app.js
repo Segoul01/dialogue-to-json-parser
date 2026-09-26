@@ -5,7 +5,10 @@ const copyButton    = document.querySelector("#copyButton");
 var result = [];
 
 convertButton.addEventListener('click', convertDialogueToJSON);
-copyButton.addEventListener('click', () => { navigator.clipboard.writeText(JSON.stringify(result, null, 2)) });
+copyButton.addEventListener('click', () => {
+    navigator.clipboard.writeText(JSON.stringify(result, null, 2));
+    alert('Output copied to clipboard!');
+});
 
 // const KEYBOILERPLATE = 'dialogue.npctravelers';
 
