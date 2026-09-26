@@ -49,11 +49,14 @@ function convertDialogueToJSON() {
             currentDialogue.id = id;
             currentDialogue.start = elements[3];
             currentDialogue.nodes = {};
+            lastProperty = null;
+            currentQuestion = null;
+            options = new Array();
         }
 
         if (currentQuestion === null) {
             currentDialogue.nodes[dialogueType] = { textKey: line };
-
+            
             if (lastProperty && !dialogueType.includes('option')) {
 
                 if (dialogueType.includes('response')) {
@@ -81,7 +84,7 @@ function convertDialogueToJSON() {
                 });
             }
             else {
-                options.reverse;
+                options = options.reverse();
                 currentDialogue.nodes[currentQuestion]["choices"] = options;
                 options = new Array();
                 currentQuestion = null;
