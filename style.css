@@ -28,3 +28,9 @@ button {
     flex-direction: column;
     white-space: pre-wrap;
 }
+
+.output-wrapper .output-btns {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}

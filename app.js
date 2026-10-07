@@ -1,14 +1,17 @@
 const inputDialogue = document.querySelector("#inputDialogue");
 const convertButton = document.querySelector("#convertButton");
 const copyButton    = document.querySelector("#copyButton");
+const dwnldButton   = document.querySelector("#downloadButton");
 
 var result = [];
 
+dwnldButton.addEventListener('click', downloadOutput);
 convertButton.addEventListener('click', convertDialogueToJSON);
 copyButton.addEventListener('click', () => {
     navigator.clipboard.writeText(JSON.stringify(result, null, 2));
     alert('Output copied to clipboard!');
 });
+
 
 // const KEYBOILERPLATE = 'dialogue.npctravelers';
 
@@ -125,4 +128,28 @@ function findIfIdPresent(id, arr) {
     }
 
     return false;
+}
+
+
+function downloadOutput() {
+    result.forEach(element => {
+        const idArr = element.id.split('_').splice(1);
+        var fileName = idArr.join('_');
+        downloadObjectAsJson(element, fileName);
+    });
+}
+
+
+// Source - https://stackoverflow.com/a/30800715
+// Posted by mlimper, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-10-07, License - CC BY-SA 4.0
+
+function downloadObjectAsJson(exportObj, exportName){
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj, null, 2));
+    var downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href",     dataStr);
+    downloadAnchorNode.setAttribute("download", exportName + ".json");
+    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
 }
