@@ -29,6 +29,10 @@ function convertDialogueToJSON() {
 
     for (let line of ar) {
 
+        if (line === ''){
+            continue;
+        }
+
         const elements = line.split('.');
         const id = elements[2];
         const dialogueType = elements[3];
@@ -93,8 +97,13 @@ function convertDialogueToJSON() {
         }
     }
 
+    var resultStr = "";
 
-    document.querySelector("#output").value = JSON.stringify(result, null, 2);
+    result.forEach(element => {
+        resultStr += JSON.stringify(element, null, 2) + "\n\n";
+    });
+
+    document.querySelector("#output").value = resultStr;
 
 }
 
